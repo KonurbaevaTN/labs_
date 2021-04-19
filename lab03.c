@@ -6,7 +6,9 @@ int main()
 		double h, y;
 		printf("Enter h = ");
 		scanf("%lf", &h);
-  	while (x < 2 + h)
+		printf("   x              f(x)\n");
+    printf("-------------------------\n");
+  	while (x < 2.0 + pow(h, 2))
 		{
 				if (x <= 1 && x >= -1)
 				{
