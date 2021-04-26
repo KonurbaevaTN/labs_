@@ -3,12 +3,13 @@
 int main()
 {
     double h;
-    double i, y;
+    double i = -1.0, y;
     printf("Enter h = ");
     scanf("%lf", &h);
     printf("   x              f(x)\n");
     printf("-------------------------\n");
-    for (i = -1; i < 2.0 + pow(h,2); i += h)
+    long int k = -1.0, n = 3 / h;
+    for (k = -1; k < n; k++)
     {
         if (i <= 1 && i >= -1)
         {
@@ -19,6 +20,7 @@ int main()
             y = i * i - sin(i) / cos(i);
         }
         printf("%lf \t %lf \n", i, y);
+        i += h;
     }
     return 0;
 }
