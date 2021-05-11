@@ -3,31 +3,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-void fill(int n, int a[][n])
+void fill(int n, int m, int a[][n])
 {
     int i, j;
     for (i = 0; i < n; i++)
-        for (j = 0; j < n; j++)
+        for (j = 0; j < m; j++)
             a[i][j] = rand() % 10;
 }
 
-void print(int n, int a[][n])
+void print(int n, int m, int a[][n])
 {
     int i, j;
     for (i = 0; i < n; i++)
     {
-        for (j = 0; j < n; j++)
+        for (j = 0; j < m; j++)
             printf("%3d", a[i][j]);
         printf("\n");
     }
 }
 
-void search(int n, int m, int a[][n])
+void search(int n, int m, int b, int a[][n])
 {
-    int i, j, s = 0, z;
+    int i, j, s = 0;
+    int k[n][m];
     for (i = 0; i < n; i++)
     {
-        for (j = 0; j < n; j++)
+        for (j = 0; j < m; j++)
         {
             if (i == j || i + 1 == j || i == j + 1)
             {
@@ -35,42 +36,44 @@ void search(int n, int m, int a[][n])
             }
         }
     }
-    if (s > m)
+    if (s > b)
     {
-        for (i = 0; i < n - 1; i++)
-            for (j = i + 1; j < n; j++)
+        for (i = 0; i < n; i++)
+            for (j = 0; j < m; j++)
             {
-               z = a[i][j];
-               a[i][j] = a[j][i];
-               a[j][i] = z;
+               k[i][j] = a[j][i];
             }
+        printf("Ansewr: \n");
+        print(m, n, k);
     }
     else
     {
         for (i = 0; i < n; i++)
-            for (j = 0; j < n; j++)
+            for (j = 0; j < m; j++)
             {
                 if (i != j && i + 1 != j && i != j + 1)
                 {
                     a[i][j] = 0;
                 }
             }
+        printf("Ansewr: \n");
+        print(n, m, a);
     }
-    printf("Ansewr: \n");
-    print(n, a);
 }
 
 int main()
 {
     srand(time(NULL));
-    int n, m;
+    int n, m, b;
     printf("n -> ");
     scanf("%d", &n);
     printf("m -> ");
     scanf("%d", &m);
+    printf("b -> ");
+    scanf("%d", &b);
     int mas[n][m];
-    fill(n, mas);
-    print(n, mas);
-    search(n, m, mas);
+    fill(n, m, mas);
+    print(n, m, mas);
+    search(n, m, b, mas);
     return 0;
 }
