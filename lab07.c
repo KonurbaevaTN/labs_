@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void fill(int n, int m, int a[][n])
+void fill(int n, int m, int a[][m])
 {
     int i, j;
     for (i = 0; i < n; i++)
@@ -11,7 +11,7 @@ void fill(int n, int m, int a[][n])
             a[i][j] = rand() % 10;
 }
 
-void print(int n, int m, int a[][n])
+void print(int n, int m, int a[][m])
 {
     int i, j;
     for (i = 0; i < n; i++)
@@ -22,7 +22,7 @@ void print(int n, int m, int a[][n])
     }
 }
 
-void search(int n, int m, int b, int a[][n])
+void search(int n, int m, int b, int a[][m])
 {
     int i, j, s = 0;
     int k[n][m];
@@ -41,14 +41,14 @@ void search(int n, int m, int b, int a[][n])
         for (i = 0; i < n; i++)
             for (j = 0; j < m; j++)
             {
-               k[i][j] = a[j][i];
+               k[j][i] = a[i][j];
             }
         printf("Ansewr: \n");
         print(m, n, k);
     }
     else
     {
-        for (i = 0; i < n; i++)
+        for (i = 0; i < n - 1; i++)
             for (j = 0; j < m; j++)
             {
                 if (i != j && i + 1 != j && i != j + 1)
