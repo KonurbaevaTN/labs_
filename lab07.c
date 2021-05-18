@@ -25,7 +25,7 @@ void print(int n, int m, int a[][m])
 void search(int n, int m, int b, int a[][m])
 {
     int i, j, s = 0;
-    int k[n][m];
+    int k[m][n];
     for (i = 0; i < n; i++)
     {
         for (j = 0; j < m; j++)
@@ -38,17 +38,19 @@ void search(int n, int m, int b, int a[][m])
     }
     if (s > b)
     {
-        for (i = 0; i < n; i++)
-            for (j = 0; j < m; j++)
+        for (i = 0; i < m; i++)
+            for (j = 0; j < n; j++)
             {
-               k[j][i] = a[i][j];
+               k[i][j] = a[j][i];
             }
+
+
         printf("Ansewr: \n");
         print(m, n, k);
     }
     else
     {
-        for (i = 0; i < n - 1; i++)
+        for (i = 0; i < n; i++)
             for (j = 0; j < m; j++)
             {
                 if (i != j && i + 1 != j && i != j + 1)
