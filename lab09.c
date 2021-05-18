@@ -5,7 +5,7 @@
 #include <ctype.h>
 int main(int argc, char* argv[])
 {
-    char str[37] = "Hello world6, m4y 32name67 is 142...";
+    char str[39] = "Hello45 world6, m4y 32name67 is 142...";
     char *p = str;
     int sum = 0;
     while (*p) {
@@ -15,6 +15,6 @@ int main(int argc, char* argv[])
         while (*p && isdigit(*p))
             ++p;
     }
-    printf("%d\n", sum);
+    printf("Сумма чисел в строке = %d\n", sum);
     return sum;
 }
