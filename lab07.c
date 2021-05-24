@@ -22,10 +22,9 @@ void print(int n, int m, int a[][m])
     }
 }
 
-void search(int n, int m, int b, int a[][m])
+int summa(int n, int m, int b, int s, int a[][m])
 {
-    int i, j, s = 0;
-    int k[m][n];
+    int i, j;
     for (i = 0; i < n; i++)
     {
         for (j = 0; j < m; j++)
@@ -36,37 +35,43 @@ void search(int n, int m, int b, int a[][m])
             }
         }
     }
-    if (s > b)
-    {
-        for (i = 0; i < m; i++)
-            for (j = 0; j < n; j++)
-            {
-               k[i][j] = a[j][i];
-            }
+    return (s);
+}
 
+void transpon(int n, int m, int a[][m])
+{
+    int i, j;
+    int k[m][n];
+    for (i = 0; i < m; i++){
+        for (j = 0; j < n; j++)
+        {
+            k[i][j] = a[j][i];
+        }
+    }
+    printf("Ansewr: \n");
+    print(m, n, k);
+}
 
-        printf("Ansewr: \n");
-        print(m, n, k);
-    }
-    else
-    {
-        for (i = 0; i < n; i++)
-            for (j = 0; j < m; j++)
+void nool(int n, int m, int a[][m])
+{
+    int i, j;
+    for (i = 0; i < n; i++){
+        for (j = 0; j < m; j++)
+        {
+            if (i != j && i + 1 != j && i != j + 1)
             {
-                if (i != j && i + 1 != j && i != j + 1)
-                {
-                    a[i][j] = 0;
-                }
+                a[i][j] = 0;
             }
-        printf("Ansewr: \n");
-        print(n, m, a);
+        }
     }
+    printf("Ansewr: \n");
+    print(n, m, a);
 }
 
 int main()
 {
     srand(time(NULL));
-    int n, m, b;
+    int n, m, b, s = 0;
     printf("n -> ");
     scanf("%d", &n);
     printf("m -> ");
@@ -76,6 +81,9 @@ int main()
     int mas[n][m];
     fill(n, m, mas);
     print(n, m, mas);
-    search(n, m, b, mas);
+    if (summa(n, m, b, s, mas) > b)
+        transpon(n, m, mas);
+    else
+        nool(n, m, mas);
     return 0;
 }
