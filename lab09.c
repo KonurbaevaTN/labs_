@@ -5,7 +5,8 @@
 #include <ctype.h>
 int main(int argc, char* argv[])
 {
-    char str[39] = "Hello45 world6, m4y 32name67 is 142...";
+    char str[100];
+    scanf("%[^\n]s", str);
     char *p = str;
     int sum = 0;
     while (*p) {
