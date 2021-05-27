@@ -70,29 +70,6 @@ void out(struct s hotel[], int m)
     }
 }
 
-void openFile(int m, hotel *name)
-{
-    FILE* magazine_list = fopen("file.txt", "r");
-    if (file == NULL)
-        printf("Файла не существует\n");
-    else
-    {
-        for(int i = 0; i < n; i++)
-            fscanf(file, "%s %d %s %d %d %d %d\n", hotel[i].name, hotel[i].stars, hotel[i].adres, hotel[i].tel, hotel[i].nomera, hotel[i].luks, hotel[i].svobod);
-        fclose(file);
-    }
-}
-
-void saveFile(struct s hotel[], int m)
-{
-    FILE* file = fopen("file.txt", "w");
-    for (int i = 0; i < m; i++)
-    {
-        fprintf(file, "%s %d %s %d %d %d %d\n", hotel[i].name, hotel[i].stars, hotel[i].adres, hotel[i].tel, hotel[i].nomera, hotel[i].luks, hotel[i].svobod);
-    }
-    fclose(file);
-}
-
 int main()
 {
     struct s hotel[50];
@@ -106,13 +83,12 @@ int main()
     hotel[3] = e3;
     int m = 4;
     char c;
-    openFile(struct s hotel[], m);
     for (;;)
     {
         printf("\n");
         printf("Choose? n - add hotel, ");
         printf("d - delete hotel, s - search best hotel with free rooms, ");
-        printf("p - print hotels, o - save file, e - exit ");
+        printf("p - print hotels, e - exit ");
         printf("\n");
         scanf("%s", &c);
         switch (c)
@@ -130,13 +106,8 @@ int main()
             case 'p':
                 out(hotel, m);
                 break;
-            case 'o':
-                saveFile(hotel, m);
             case 'e':
                 return 0;
-            default:
-                printf("Error\n");
-                break;
         }
     }
     return 0;
