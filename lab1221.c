@@ -90,17 +90,18 @@ void bestHotel(int n, hotel *name)
     struct hot bestHotels[n];
     int bestStars = 5, i, countBest = 0, maxFreeRooms;
     for (i = 0; i <= n; i++)
-    {
-        if (name[i].stars == bestStars)
+        if (name[i].stars == bestStars && name[i].status != 0)
         {
-            bestHotels[countBest] = name[i];
-            countBest++;
+            if (name[i].stars == bestStars)
+            {
+                bestHotels[countBest] = name[i];
+                countBest++;
+            }
+            if (i == n && countBest == 0){
+                i = 0;
+                bestStars--;
+            }
         }
-        if (i == n && countBest == 0){
-            i = 0;
-            bestStars--;
-        }
-    }
     maxFreeRooms = bestHotels[1].freeRooms;
     int indexOfMax = 0;
     for (i = 0; i < countBest; i++)
